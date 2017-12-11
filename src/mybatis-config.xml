@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+ 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!-- 类型别名 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.iflysse.bbs.po.User" />
+		<typeAlias alias="News" type="com.iflysse.bbs.po.News" />
+		<typeAlias alias="Reply" type="com.iflysse.bbs.po.Reply" />
+	</typeAliases>
+	
+	<!-- 列出映射文件 -->
+	<mappers>
+		<mapper resource="com/iflysse/bbs/dao/mapper/UserMapper.xml" />
+		<mapper resource="com/iflysse/bbs/dao/mapper/NewsMapper.xml" />
+		<mapper resource="com/iflysse/bbs/dao/mapper/ReplyMapper.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+

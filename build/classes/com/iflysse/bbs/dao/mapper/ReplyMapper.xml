@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--等价于dao接口的实现：namespace为该xml实现的接口 -->
+	<mapper namespace="com.iflysse.bbs.dao.ReplyDao">
+	
+	<resultMap type="Reply" id="ReplyResultMap">
+		<id property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="replyDate" column="replyDate" />
+		<result property="userId" column="userId" />
+		<result property="newsId" column="newsId" />
+		<result property="userName" column="userName" />
+	</resultMap>
+	
+	<select id="getReplyListByNewsId" parameterType="int" resultMap="ReplyResultMap">
+		<![CDATA[ 
+             select r.*,u.name as username from reply r LEFT JOIN user u ON r.userid = u.id where newsid=#{newsId} order by r.replydate desc
+        ]]>
+   </select>
+   
+   <insert id="add" parameterType="Reply" useGeneratedKeys="true" keyProperty="id">
+   		<![CDATA[ 
+			insert into reply(content,replydate,userid,newsid)values(#{content},#{replyDate},#{userId},#{newsId});
+        ]]>
+   </insert>
+   
+   <update id="delete" parameterType="int">
+  	    <![CDATA[ 
+  	   		 delete from reply where newsid=#{newsId}
+        ]]>
+   </update>
+   <update id="deletebyId" parameterType="int">
+  		 <![CDATA[ 
+  	   		delete from reply where id=#{id}
+        ]]>
+   </update>
+</mapper>

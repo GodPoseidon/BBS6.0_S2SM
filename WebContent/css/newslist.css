@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+
+.center {
+	margin: 0px auto;
+	background-color: #22DDDD;
+	height: 550px;
+	width: 830px;
+}
+
+.header {
+	margin: 0px auto;
+	width: 500px;
+	padding-top: 30px;
+}
+
+.title {
+	margin-left: 30px;
+	width: 300px;
+	height: 20px;
+}
+
+.search {
+	height: 25px;
+	width: 70px;
+	margin-left: 30px;
+}
+
+.middle {
+	background-color: #FFA500;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.newsadd {
+	background-color: red;
+	text-decoration: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+#content {
+	border: solid 1px black;
+	width: 800;
+	margin: 0px 20px;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.tableheader {
+	font-weight: bold;
+	background-color: #09F797;
+	height: 30px;
+}
+
+table tr {
+	height: 30px;
+}
+
+.odd {
+	background-color: #2292DD;
+}
+
+.even {
+	background-color: #D5912B;
+}
+
+table tr a {
+	color: black;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#page {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.page {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.page a {
+	margin-left: 5px;
+	margin-right: 5px;
+	text-decoration: none;
+}

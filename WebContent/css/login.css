@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+.center{
+	margin: 0px auto;
+	width: 1200px;
+	height:700px;
+	margin-top:50px;
+	background-image: url('../images/login_bg.jpg');
+	background-repeat: no-repeat;
+	background-size:1200px 800px;
+	padding-top: 40px;
+}
+form{
+	margin-top: 80px;
+}
+span{
+	font-size: 11pt;
+}
+
+input {
+	margin-right: 30px;
+}
+.left{
+	float: left;
+}

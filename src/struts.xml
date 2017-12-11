@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	 <!-- 指定web应用的默认编码为UTF-8 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <!-- 指定struts2的请求处理后缀，匹配*.action的所有请求 -->
+	<!-- <constant name="struts.action.extension" value="action"/> -->
+    <!-- 关闭struts2的!动态方法调用,建议使用通配符匹配方式实现动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <!-- 设置浏览器是否缓存静态页面，默认为true，建议：开发阶段关闭，生产环境打开 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts.xml修改时自动重新加载，默认为false。建议：开发阶段打开，生产环境关闭 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <!-- 开发模式下打开，便于打印详细日志，生产环境下关闭 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 设置视图主题为css_xhtml -->
+    <constant name="struts.ui.theme" value="simple" />
+	
+	
+    <package name="default" namespace="/" extends="json-default"> 
+    	<default-action-ref name="index"></default-action-ref>
+    
+    	<action name="index">
+    	<result type="redirectAction">news_list</result>
+    	</action>
+    
+    	<action name="news_*" class="newsAction" method="{1}">
+    		<result name="list">/WEB-INF/view/index.jsp</result>
+    		<result name="view">/WEB-INF/view/viewnews.jsp</result>
+    	</action>
+    	
+    	<action name="user_*" class="userAction" method="{1}">
+    		<result name="login_success" type="redirectAction">news_list</result>
+    		<result name="login_input">/WEB-INF/view/login.jsp</result>
+    		<result name="register_success" type="redirectAction">view_login</result>
+    	</action>
+    	
+ 		<action name="reply_*" class="replyAction" method="{1}">
+ 			<result name="view" type="json">
+ 			<param name="root">replylist</param>
+ 			</result>
+ 			<result name="delete" type="json">
+ 			<param name="root">results</param>
+ 			</result>
+ 			<result name="add" type="json">
+ 			<param name="root">results</param>
+ 			</result>
+ 		</action>
+ 		
+    	<action name="view_*">
+    		<result>/WEB-INF/view/{1}.jsp</result>
+    	</action>
+    	
+    </package>
+    
+    
+    <package name="person" namespace="/person" extends="struts-default"> 
+    
+    	<action name="mynews_*" class="myNewsAction" method="{1}">
+    		<result name="newsadd_success" type="redirectAction">mynews_newslist</result>
+    		<result name="newslist_success" >/WEB-INF/view/person/newslist.jsp</result>
+    		<result name="newsdelete_success">/WEB-INF/view/success.jsp</result>
+    		<result name="newsedit" >/WEB-INF/view/person/newsedit.jsp</result>
+    		<result name="newsedit_success"  type="redirectAction">mynews_newslist</result>
+    	</action>
+    	
+    	<action name="user_*" class="userAction" method="{1}">
+    		<result name="pwdedit_input" >/WEB-INF/view/person/pwdedit.jsp</result>
+    		<result name="pwdedit_success" >/WEB-INF/view/success.jsp</result>
+    		<result name="cancel_success" type="redirectAction">
+    		<param name="namespace">/</param>
+    		<param name="actionName">news_list</param>
+    		</result>
+    	</action>
+    
+    	<action name="view_*">
+    		<result>/WEB-INF/view/person/{1}.jsp</result>
+    	</action>
+    </package>
+    
+    
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

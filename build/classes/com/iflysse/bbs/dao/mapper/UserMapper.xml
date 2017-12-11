@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--等价于dao接口的实现：namespace为该xml实现的接口 -->
+	<mapper namespace="com.iflysse.bbs.dao.UserDao">
+	
+	<resultMap type="User" id="UserResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+	</resultMap>
+	
+	
+	<!-- id必须和接口中的方法名一样 -->
+	<insert id="add" parameterType="User">
+		<![CDATA[ 
+             insert into user(name,email,password)values(#{name},#{email},#{password})
+        ]]>
+	</insert>
+	<update id="updatePassword">
+		<![CDATA[ 
+            update user set password=#{password} where id=#{id}
+       	]]>
+	</update>
+	
+	<select id="getEmailCount" parameterType="String" resultType="int">
+		<![CDATA[ 
+            select count(*) from user where email=#{email}
+       	]]>
+	</select>
+	
+	<select id="getUser" resultMap="UserResultMap">
+		<![CDATA[ 
+            select * from user where email=#{email} and password=#{password}
+       	]]>
+	</select>
+</mapper>
